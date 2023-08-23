@@ -183,18 +183,18 @@ export default class RideScreen extends Component {
             });
             // Verifique e atualize o valor da elegibilidade do usuário
             // se deve ser 'true' ou 'false'
-            isUserEligible =         ;
+            isUserEligible =  false       ;
             Alert.alert("ID de usuário inválido");
         } else {
             userRef.docs.map(doc => {
                 if (!doc.data().bike_assigned) {
                     // Verifique e atualize o valor de elegibilidade do usuário
                     // se deve ser 'true' ou 'false'
-                    isUserEligible =      ;
+                    isUserEligible =   true   ;
                 } else {
                     // Verifique e atualize o valor de elegibilidade do usuário
                     // se deve ser 'true' ou 'false'
-                    isUserEligible =      ;
+                    isUserEligible = false     ;
                     Alert.alert("Encerre o passeio atual para alugar outra bicicleta.");
                     this.setState({
                         bikeId: ""
@@ -216,7 +216,7 @@ export default class RideScreen extends Component {
         transactionRef.docs.map(doc => {
             var lastBikeTransaction = doc.data();
             // Verifique se 'lastBikeTransaction.userid' é igual a 'userId'. 
-            if (             ) {
+            if (lastBikeTransaction.user_id == userId            ) {
                 isUserEligible = true;
             } else {
                 isUserEligible = false;
@@ -227,7 +227,7 @@ export default class RideScreen extends Component {
             }
         });
         // Retornar o status de elegibilidade do usuário
-        return                 ;
+        return   isUserEligible              ;
     };
 
     assignBike = async (bikeId, userId, bikeType, userName) => {
